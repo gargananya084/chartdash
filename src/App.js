@@ -7,9 +7,7 @@ import BarChart from "./Components/barchart.component";
 import NavBar from "./Components/navbar.component";
 
 function App() {
-  
     const [UserData, setChartData] = useState(null);
-  
     useEffect(() => {
       (async () => {
         try {
