@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+//import {UserData} from "./Data";
 import LineChart from "./Components/linechart.component";
 import PieChart from "./Components/piechart.component";
 import BarChart from "./Components/barchart.component";
 import NavBar from "./Components/navbar.component";
 function App() {
-    const [UserData, setChartData] = useState(null);
+  const [UserData, setChartData] = useState(null);
     useEffect(() => {
       (async () => {
         try {
           const response = await fetch(
-            "https://www.coingecko.com/api/documentations/v3#/coins/get_coins__id__market_chart"
+            "https://api.coingecko.com/api/v3/coins/bitcoin/history?date=30-12-2023&localization=false"
           );
           const data = await response.json();
           console.log(data);
@@ -37,8 +38,22 @@ function App() {
           datasets.push({
             label: key.charAt(0).toUpperCase() + key.slice(1),
             data: UserData.map((item) => item[key]),
-            backgroundColor: `rgba(${index * 20}, ${index * 20}, ${index * 20}, 0.2)`, // Adjust the alpha value for opacity
-            borderColor: `rgb(${255 - (index * 10)}, ${255 - (index * 10)}, ${255 - (index * 10)})`, // Adjust the RGB values for border color
+            backgroundColor:  ['rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'
+          ],
+            borderColor: ['rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)'
+          ],
             borderWidth: 1,
           });
         }
