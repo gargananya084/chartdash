@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-//import { UserData } from "./Data";
 import LineChart from "./Components/linechart.component";
 import PieChart from "./Components/piechart.component";
 import BarChart from "./Components/barchart.component";
 import NavBar from "./Components/navbar.component";
-
 function App() {
     const [UserData, setChartData] = useState(null);
     useEffect(() => {
@@ -21,7 +19,6 @@ function App() {
           console.error("Error fetching data:", error);
         }
       })();
-      
     }, []);
   
     if (!UserData) {
